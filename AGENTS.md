@@ -5,18 +5,25 @@
 
 ## 项目事实
 
-- 项目：毕业设计 design（`lh0601423-png/-`）
-- 目标：管理毕业设计的代码、文档和交付；当前完成治理模板初始化，具体课题和业务技术栈尚未确定。
-- 当前验证技术栈：Python 3.12、PyYAML 6.0.3、Bash；Windows 使用 PowerShell 7 与 Git for Windows。
+- 项目：AI 辅助模块化山体滑坡先遣救援机械
+- 项目类型：工业 / 产品设计毕业设计。
+- 项目目标：面向民用通用应急救援单位，完成一套用于山体滑坡核心危险区域先遣救援的模块化无人救援机械系统概念设计。
+- 最终主要交付：产品外观、CMF、概念机械结构、系统架构、使用流程、三维效果表达、展板 / 论文，以及操作员 HUD 可运行交互演示。
+- 项目设计工具：Rhino、Blender、KeyShot、Figma。
+- HUD 演示：面向 Windows 笔记本 / 桌面电脑浏览器，以 1920×1080、16:9 横屏为基准，UI 使用英文；使用模拟数据与预设演示场景，不连接真实救援机器人。
+- HUD 软件技术栈：当前尚未初始化正式 HUD 工程，具体编程技术栈待定，待工程实际初始化后更新。
+- 仓库治理 / 验证工具：Python 3.12、PyYAML、Bash、PowerShell 7、Git for Windows。
+- 当前阶段：需求定义与总体方案设计。
+- 权威需求：`docs/requirements/requirements-v0.2.md`。
 - 默认分支：`main`
-- VCS：Git，远端 `origin`，选用 `profiles/git.md`；日常任务使用短期分支，不需要初始化 Jujutsu。
+- VCS：Git，远端 `origin`，使用 `profiles/git.md`；当前项目不使用 Jujutsu，不初始化 `.jj`。
 - 权威验证入口：`bash scripts/check.sh`
 - Windows 等价入口：`pwsh -NoProfile -File scripts/check.ps1`；优先使用项目 `.venv`。
 - 采用方式：README 快速采用方式 1，完整模板；本仓库维护 `.github/workflows/`，策略版本显式固定为 `v5.0.0`。
-- 项目设置与实际采用来源：`docs/project-setup.md`。
+- 项目采用来源和当前验证状态：`docs/project-setup.md`。
 - 合并策略：默认由人类决定 Squash Merge；微小修复快速通道仅按
   `core/workflow.md` 的明确条件使用。
-- 发布：尚无项目发布；若授权发布则使用 tag-only，已发布 Tag 不移动、不覆盖。
+- 发布：当前项目没有发布流程；不要为毕业设计主动建立 release/tag 流程。
 
 ## 始终有效的边界
 
@@ -35,6 +42,7 @@
 
 | 当前任务需要 | 读取 |
 | --- | --- |
+| 产品目标、需求、设计范围、HUD 概念要求 | `docs/requirements/requirements-v0.2.md` |
 | 普通实现、修复、文档、测试、PR 交付 | `core/workflow.md` |
 | merge / release / deploy / 远端删除 / 已发布历史重写 | `core/policy.md` |
 | Git 发布或 Tag 操作 | `profiles/git.md` |

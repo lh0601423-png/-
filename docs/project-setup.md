@@ -3,7 +3,8 @@
 ## 采用记录
 
 - 仓库：`lh0601423-png/-`，远端 `origin`，默认分支 `main`。
-- 项目目标：管理毕业设计代码、文档与交付。具体业务课题和技术栈尚未确定。
+- 项目：AI 辅助模块化山体滑坡先遣救援机械，工业 / 产品设计毕业设计；面向民用通用应急救援单位，完成山体滑坡核心危险区域先遣救援的模块化无人救援机械系统概念设计。权威需求见 [需求书 v0.2](requirements/requirements-v0.2.md)。
+- 当前处于需求定义与总体方案设计阶段，设计工具为 Rhino、Blender、KeyShot、Figma；正式 HUD 工程尚未初始化，其软件技术栈待定。下文的 Python、PyYAML、Bash、PowerShell 是仓库治理 / 验证工具。
 - 采用日期：2026-09-17。
 - 采用范围：README 快速采用方式 1（GitHub Template Repository / 完整模板）。
 - 实际文件来源：`lh0601423-png/-@3699e67ba416d76f73182f3bfd035f06ba022b15`。
@@ -11,7 +12,8 @@
 - VCS Profile：Git。Jujutsu 不适用，未初始化 `.jj`。
 - 首次演练授权：用户在本次会话要求按 README 方式 1 启用，并确认在链接仓库及当前目录实施。
 - 授权范围：项目配置、Codex 技能入口、本地验证、任务分支和 Draft PR 演练。
-- 项目验证保留 `scripts/check.sh`；目前覆盖治理脚本和文档，业务代码加入后须补充相应测试、构建检查。
+- 当前权威验证入口 `bash scripts/check.sh` 及 Windows 等价入口 `pwsh -NoProfile -File scripts/check.ps1` 已可运行，主要覆盖仓库治理模板、配置和文档；当前没有 HUD 的 lint / typecheck / build 命令或自动测试。
+- HUD 或其他业务代码建立后，必须把项目真实的 lint / typecheck / test / build 接入 `scripts/check.sh`，再更新 `AGENTS.md` 中的技术栈和验证事实。
 - CI 保留完整模板的本地 reusable workflow，调用方显式指定 `policy-ref: v5.0.0`，避免默认回退到冻结的 `v1`。
 - 完整模板由项目维护，未使用 CLI 的受管安装事务；未创建 `.themasterplan/state.json`。
 - 只读 `check-update` 实测返回 `NOT_ADOPTED`，表示没有 CLI 受管状态；完整模板的来源与 Profile 由本文件和 `AGENTS.md` 记录。

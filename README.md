@@ -1,3 +1,15 @@
+# 毕业设计 design
+
+本项目已按下文“快速采用方式 1”接入 TheMasterplan 完整模板，使用 Git、
+`main` 分支与项目内的验证脚本。业务课题和技术栈尚未确定。
+
+- Agent 入口：[AGENTS.md](AGENTS.md)。
+- 本地运行、采用来源和 smoke 状态：[项目设置](docs/project-setup.md)。
+- Codex 技能入口：[themasterplan](.agents/skills/themasterplan/SKILL.md)。
+
+以下保留 TheMasterplan 上游模板说明；其中上游发布版本、平台验证和迁移记录
+不代表本项目已经完成相同操作，本项目状态以采用记录为准。
+
 # TheMasterplan
 
 > Context-minimal AI-assisted delivery governance for GitHub and Jujutsu.

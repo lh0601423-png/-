@@ -5,15 +5,18 @@
 
 ## 项目事实
 
-- 项目：TheMasterplan
-- 定位：单一交付责任人的轻量 AI 辅助代码交付治理协议。
+- 项目：毕业设计 design（`lh0601423-png/-`）
+- 目标：管理毕业设计的代码、文档和交付；当前完成治理模板初始化，具体课题和业务技术栈尚未确定。
+- 当前验证技术栈：Python 3.12、PyYAML 6.0.3、Bash；Windows 使用 PowerShell 7 与 Git for Windows。
 - 默认分支：`main`
+- VCS：Git，远端 `origin`，选用 `profiles/git.md`；日常任务使用短期分支，不需要初始化 Jujutsu。
 - 权威验证入口：`bash scripts/check.sh`
-- 当前稳定中央 Actions：`OasisSaber/TheMasterplan/.github/workflows/themasterplan-check.yml@v5.0.0`
-- v1 冻结兼容线：`OasisSaber/TheMasterplan/.github/workflows/aw-check.yml@v1`
+- Windows 等价入口：`pwsh -NoProfile -File scripts/check.ps1`；优先使用项目 `.venv`。
+- 采用方式：README 快速采用方式 1，完整模板；本仓库维护 `.github/workflows/`，策略版本显式固定为 `v5.0.0`。
+- 项目设置与实际采用来源：`docs/project-setup.md`。
 - 合并策略：默认由人类决定 Squash Merge；微小修复快速通道仅按
   `core/workflow.md` 的明确条件使用。
-- 发布：tag-only；已发布 Tag 不移动、不覆盖；`v1` 不推进。
+- 发布：尚无项目发布；若授权发布则使用 tag-only，已发布 Tag 不移动、不覆盖。
 
 ## 始终有效的边界
 

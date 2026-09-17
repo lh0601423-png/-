@@ -5,6 +5,8 @@ reasonix.toml
 # Python caches
 __pycache__/
 .pytest_cache/
+.venv/
+.themasterplan/cache/
 
 # Jujutsu internals
 .jj/

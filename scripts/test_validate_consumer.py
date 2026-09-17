@@ -111,7 +111,12 @@ class ValidateConsumerTests(unittest.TestCase):
         target.write_text("#!/bin/bash\nexit 0\n", encoding="utf-8")
         link = self.root / "scripts/check.sh"
         link.unlink()
-        os.symlink("real.sh", link)
+        try:
+            os.symlink("real.sh", link)
+        except OSError as error:
+            if os.name == "nt" and getattr(error, "winerror", None) == 1314:
+                self.skipTest("Windows symlink privilege is unavailable; covered by Linux CI")
+            raise
         result = self.run_validator(str(self.root), "scripts/check.sh")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("symbolic link", result.stderr)

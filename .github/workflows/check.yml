@@ -21,3 +21,6 @@ jobs:
   # 真实 check-run 名称：themasterplan-check / check（与消费者 smoke 仓库一致）。
   themasterplan-check:
     uses: ./.github/workflows/themasterplan-check.yml
+    with:
+      policy-ref: v5.0.0
+      project-check-path: scripts/check.sh

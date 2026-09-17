@@ -1,3 +1,14 @@
+# 毕业设计 design 贡献说明
+
+本项目选择 Git Profile。日常开发先 `git fetch origin`，在确认没有未知本地修改后，
+从 `origin/main` 创建短期任务分支。运行 `bash scripts/check.sh`，阅读完整 diff，
+再推送该任务分支并按照 [PR 模板](.github/pull_request_template.md) 创建 Pull Request。
+使用 Windows 时可直接运行 `pwsh -NoProfile -File scripts/check.ps1`。
+具体安装步骤与平台限制见 [项目设置](docs/project-setup.md)。
+
+以下保留上游工作流维护说明，其中 Jujutsu 命令仅作可选工具参考；
+本项目无需安装或初始化 Jujutsu。
+
 # Contributing to TheMasterplan
 
 仅在修改工作流本身时维护本仓库。开始前读取 [AGENTS.md](AGENTS.md)，并在以下三条任务路径中选择一条。

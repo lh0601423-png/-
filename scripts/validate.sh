@@ -29,11 +29,16 @@ if ! git ls-files -z -- '*.sh' >"$SHELL_FILES"; then
     exit 1
 fi
 
-PYTHON=""
-if python3 -c "import sys" >/dev/null 2>&1; then
+# Respect the interpreter selected by the authoritative check entrypoint.
+PYTHON="${PYTHON:-}"
+if [ -n "$PYTHON" ] && "$PYTHON" -c "import sys" >/dev/null 2>&1; then
+    :
+elif python3 -c "import sys" >/dev/null 2>&1; then
     PYTHON="python3"
 elif python -c "import sys" >/dev/null 2>&1; then
     PYTHON="python"
+else
+    PYTHON=""
 fi
 
 echo "=== Validation ==="

@@ -7,6 +7,18 @@ FAILED=0
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO_DIR" || exit 1
 
+# Use the project's isolated dependencies when present, on Windows or POSIX.
+if [ -x "$REPO_DIR/.venv/Scripts/python.exe" ]; then
+    export PATH="$REPO_DIR/.venv/Scripts:$PATH"
+    PYTHON="python"
+elif [ -x "$REPO_DIR/.venv/bin/python" ]; then
+    export PATH="$REPO_DIR/.venv/bin:$PATH"
+    PYTHON="python"
+else
+    PYTHON=""
+fi
+export PYTHONUTF8=1
+
 if ! command -v git >/dev/null 2>&1; then
     echo "ERROR: Git is required for repository validation." >&2
     exit 1
@@ -23,12 +35,14 @@ if ! git ls-files -z -- 'scripts/*.py' >"$PYTHON_FILES"; then
     exit 1
 fi
 
-PYTHON=""
-if python3 -c "import sys" >/dev/null 2>&1; then
+if [ -n "$PYTHON" ]; then
+    :
+elif python3 -c "import sys" >/dev/null 2>&1; then
     PYTHON="python3"
 elif python -c "import sys" >/dev/null 2>&1; then
     PYTHON="python"
 fi
+export PYTHON
 
 echo "=== Repository check ==="
 echo ""

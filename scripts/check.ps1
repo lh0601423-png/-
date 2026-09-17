@@ -8,12 +8,24 @@ $repositoryDirectory = Split-Path -Parent $PSScriptRoot
 $bashPath = $null
 
 if ($IsWindows) {
+    # Git for Windows may be installed outside Program Files.
+    $gitCommand = Get-Command git -CommandType Application -ErrorAction SilentlyContinue |
+        Select-Object -First 1
+    if ($gitCommand) {
+        $gitRoot = Split-Path -Parent (Split-Path -Parent $gitCommand.Source)
+        $candidate = Join-Path $gitRoot "bin\bash.exe"
+        if (Test-Path -LiteralPath $candidate) {
+            $bashPath = $candidate
+        }
+    }
+
     $programFilesDirectories = @(
         [Environment]::GetFolderPath("ProgramFiles"),
         [Environment]::GetFolderPath("ProgramFilesX86")
     ) | Where-Object { $_ }
 
     foreach ($directory in $programFilesDirectories) {
+        if ($bashPath) { break }
         $candidate = Join-Path $directory "Git\bin\bash.exe"
         if (Test-Path -LiteralPath $candidate) {
             $bashPath = $candidate

@@ -1,0 +1,23 @@
+name: Check
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, reopened, synchronize]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read # Required only for checkout; PR data comes from the event payload.
+
+concurrency:
+  group: check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # 相对路径调用当前 PR 内的中央 reusable workflow，
+  # 确保 TheMasterplan 的 PR 测试当前 PR 中的策略实现而不是远端旧版本。
+  # 真实 check-run 名称：themasterplan-check / check（与消费者 smoke 仓库一致）。
+  themasterplan-check:
+    uses: ./.github/workflows/themasterplan-check.yml

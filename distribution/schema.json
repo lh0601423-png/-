@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TheMasterplan distribution manifest",
+  "description": "Declares immutable TheMasterplan distribution identity, components, ownership, and package file mappings.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "distribution_version",
+    "source_repository",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "distribution_version": {
+      "type": "string",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+(?:[-+][A-Za-z0-9_.-]+)?$"
+    },
+    "source_repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "adapters": {
+          "type": "array",
+          "deprecated": true,
+          "description": "v4 upgrade compatibility bridge only; v5 runtime selection ignores Adapter components.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "destination",
+          "ownership"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "destination": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ownership": {
+            "enum": [
+              "managed-replace",
+              "managed-block",
+              "generated-if-missing",
+              "project-owned"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
